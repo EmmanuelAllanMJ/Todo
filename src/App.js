@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Input from "./components/TodoComponents/Input/Input";
+import List from "./components/TodoComponents/List/List";
+
+const DUMMY_TodoItems = [
+  { id: "t1", title: "Do all exercises" },
+  { id: "t2", title: "Finish my Assignments" },
+];
 
 function App() {
+  const [todoItem, setTodoItem] = useState(DUMMY_TodoItems);
+
+  function addItem(item) {
+    setTodoItem((prevItem) => [item, ...prevItem]);
+    console.log(todoItem);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Input items={todoItem} addTodoItem={addItem} />
     </div>
   );
 }
