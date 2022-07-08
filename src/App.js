@@ -14,10 +14,13 @@ function App() {
     setTodoItem((prevItem) => [item, ...prevItem]);
     console.log(todoItem);
   }
+  function deleteItem(title) {
+    setTodoItem((prevItem) => prevItem.filter((item) => item.title !== title));
+  }
 
   return (
     <div>
-      <Input items={todoItem} addTodoItem={addItem} />
+      <Input items={todoItem} addTodoItem={addItem} deleteItem={deleteItem} />
     </div>
   );
 }

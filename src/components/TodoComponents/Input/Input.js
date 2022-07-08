@@ -16,6 +16,9 @@ function Input(props) {
     props.addTodoItem(newItem);
     setEnteredItem("");
   }
+  function deleteItemHandler(title) {
+    props.deleteItem(title);
+  }
   return (
     <div className="container">
       <form onSubmit={onSubmitHandler}>
@@ -30,9 +33,13 @@ function Input(props) {
           <Buttons onAddHandler={props.addItem} />
         </div>
       </form>
-      <div className=" ">
+      <div>
         {props.items.map((item) => (
-          <List key={item.id} title={item.title} />
+          <List
+            key={item.id}
+            title={item.title}
+            deleteItem={deleteItemHandler}
+          />
         ))}
       </div>
     </div>
